@@ -1,0 +1,1 @@
+web gunicorn versicherung.wsgi:application --log-file -

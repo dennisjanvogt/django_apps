@@ -1,0 +1,7 @@
+Django
+black
+crispy-bootstrap5
+djangorestframework
+django-heroku
+gunicorn
+whitenoise
