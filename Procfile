@@ -1,1 +1,1 @@
-web gunicorn versicherung.wsgi:application --log-file -
+web gunicorn djangoa-apps.wsgi:application --log-file -
