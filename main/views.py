@@ -1,26 +1,44 @@
-from django.http import HttpRequest
-from django.shortcuts import render
-
-
-# Create your views here.
-def index(request: HttpRequest):
-    context = {}
-    return render(request, "index.html", context)
-
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import MitarbeiterRegisterForm
 
 
+def index(request):
+    apps = [
+        {
+            "name": "Versicherungsorganisation",
+            "description": "Versicherungsorganisation",
+            "image_url": "/static/images/versicherung.png",
+            "url": "/versicherung/",
+        },
+        {
+            "name": "Stopwatch",
+            "description": "In Arbeit",
+            "image_url": "/static/images/stopwatch.png",
+            "url": "/",
+        },
+        {
+            "name": "None",
+            "description": "Beschreibung None",
+            "image_url": "/static/images/none.png",
+            "url": "/",
+        },
+        # Weitere Apps hier hinzufügen
+    ]
+
+    return render(request, "index.html", {"apps": apps})
+
+
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect("index")
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect("home")
+            return redirect("index")
     else:
         form = AuthenticationForm()
     return render(request, "login.html", {"form": form})
@@ -28,7 +46,7 @@ def login_view(request):
 
 def register_view(request):
     if request.user.is_authenticated:
-        return redirect("home")
+        return redirect("index")
     if request.method == "POST":
         form = MitarbeiterRegisterForm(request.POST)
         if form.is_valid() and form.cleaned_data["code"] == 000:
@@ -41,8 +59,4 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect("login")
-
-
-def direct(request):
-    return redirect("login")
+    return redirect("index")
