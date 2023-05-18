@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="d-flex align-items-center">
+        <h1 class="m-auto">Schadenliste</h1>
+        <a href="{% url 'schadensfall_create' %}" class="btn btn-primary">Neuen Schaden hinzufügen</a>
+    </div>
+    <hr>
+    <table class="table mt-3 bg-dark text-light">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Vers. Vertrag</th>
+                <th>Schadenshoehe</th>
+                <th>Status</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schadensfall in schadensfall_list %}
+                <tr>
+                    <td>{{ schadensfall.id }}</td>
+                    <td>{{ schadensfall.versicherungsvertrag }}</td>
+                    <td>{{ schadensfall.schadenshoehe }}</td>
+                    <td>{{ schadensfall.status }}</td>
+                    <td>
+                        <a href="{% url 'schadensfall_detail' schadensfall.pk %}" class="btn btn-info">Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

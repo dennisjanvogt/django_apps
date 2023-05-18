@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="d-flex align-items-center">
+        <h1 class="m-auto">Vers. Vertragsliste</h1>
+        <a href="{% url 'versicherungsvertrag_create' %}" class="btn btn-primary">Neuen Vertrag hinzufügen</a>
+    </div>
+    <table class="table mt-3 bg-dark text-light">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Vertragsnummer</th>
+                <th>Kunde</th>
+                <th>Vertragsdatum</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for versicherungsvertrag in versicherungsvertrag_list %}
+                <tr>
+                    <td>{{ versicherungsvertrag.id }}</td>
+                    <td>{{ versicherungsvertrag.vertragsnummer }}</td>
+                    <td>{{ versicherungsvertrag.kunde }}</td>
+                    <td>{{ versicherungsvertrag.abgeschlossen_am }}</td>
+                    <td>
+                        <a href="{% url 'versicherungsvertrag_detail' versicherungsvertrag.pk %}" class="btn btn-info">Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

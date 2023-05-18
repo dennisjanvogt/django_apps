@@ -1,0 +1,19 @@
+/* styles.css */
+
+.card {
+    text-align: center;
+    font-size: 24px;
+    margin: 15px;
+}
+.mitarbeiter-card {
+    background-color: #4CAF50;
+}
+.kunden-card {
+    background-color: #2196F3;
+}
+.vertrage-card {
+    background-color: #FF9800;
+}
+.schadensfalle-card {
+    background-color: #F44336;
+}

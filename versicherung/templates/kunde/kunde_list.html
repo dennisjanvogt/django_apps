@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="d-flex align-items-center">
+        <h1 class="m-auto">Kundenliste</h1>
+        <a href="{% url 'kunde_create' %}" class="btn btn-primary">Neuen Kunden hinzufügen</a>
+    </div>
+    <hr>
+    <table class="table mt-3 bg-dark text-light">
+        <thead>
+            <tr>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Telefonnummer</th>
+                <th>Aktionen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for kunde in kunden %}
+                <tr>
+                    <td>{{ kunde.vorname }}</td>
+                    <td>{{ kunde.nachname }}</td>
+                    <td>{{ kunde.telefonnummer }}</td>
+                    <td>
+                        <a href="{% url 'kunde_detail' kunde.pk %}" class="btn btn-info">Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
