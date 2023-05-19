@@ -49,8 +49,8 @@ def register_view(request):
         return redirect("index")
     if request.method == "POST":
         form = MitarbeiterRegisterForm(request.POST)
-        if form.is_valid() and form.cleaned_data["code"] == 000:
-            user = form.save()
+        if form.is_valid():
+            form.save()
             return redirect("login")
     else:
         form = MitarbeiterRegisterForm()

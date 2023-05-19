@@ -26,6 +26,7 @@ class MitarbeiterRegisterForm(UserCreationForm):
         ]
 
     def save(self, commit=True):
+        self.cleaned_data["position"]
         user = super().save(commit=False)
 
         user.save()
@@ -41,3 +42,9 @@ class MitarbeiterRegisterForm(UserCreationForm):
             mitarbeiter.save()
 
         return user
+
+    def clean_code(self):
+        code = self.cleaned_data.get("code")
+        if code != 000:  # Ersetzen Sie 000 durch den erwarteten Code
+            raise forms.ValidationError("Ungültiger Code")
+        return code
