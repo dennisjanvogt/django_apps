@@ -17,14 +17,11 @@ from versicherung.models import Kunde, Mitarbeiter, Versicherungsvertrag, Schade
 
 class MitarbeiterModelTest(TestCase):
     def setUp(self):
-        # Erstelle einen Client
         self.client = Client()
-        # Erstelle einen User
         self.user = User.objects.create_user(
             username="testuser",
             password="testpassword123",
         )
-        # Erstelle einen Mitarbeiter
         self.mitarbeiter = Mitarbeiter.objects.create(
             user=self.user,
             position="Agent",
