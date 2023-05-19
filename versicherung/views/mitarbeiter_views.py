@@ -1,7 +1,6 @@
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
-from django.contrib.auth.models import Group, User
 
 from versicherung.forms import MitarbeiterForm
 from versicherung.models import Mitarbeiter

@@ -1,14 +1,11 @@
 import os
+from django import setup
+from django.test.utils import setup_test_environment, teardown_test_environment
 
-os.environ["DJANGO_SETTINGS_MODULE"] = "django_apps.settings"
-
-import django
-
-django.setup()
-
-from django.test.utils import setup_test_environment
-
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_apps.settings")
+setup()
 setup_test_environment()
+
 
 from django.test import TestCase, Client
 from django.urls import reverse, resolve
@@ -27,6 +24,7 @@ class MainViewsTestCase(TestCase):
 
     def test_index_view(self):
         response = self.client.get(reverse("index"))
+        print(response.context)
         self.assertEqual(response.status_code, 200)
         self.assertIsNotNone(response.context["apps"])
 
