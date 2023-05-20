@@ -14,6 +14,23 @@
   <title>Versicherung XYZ | Login</title>
 </head>
 <body class="bg-dark text-light">
+    <div class="container">
+        <!-- Überschrift -->
+        <div class="row align-items-center justify-content-between">
+          <div class="col-auto">
+            <h1 class="my-4 text-light">DJANGO_APPS</h1>
+          </div>
+          <div class="col-auto">
+              {% if request.user.is_authenticated %}
+                <span class="text-light">Angemeldet als: {{ request.user.username }}</span>
+                <a href="/logout" class="btn btn-warning m-2">Logout</a>
+              {% else %}
+                <a href="{% url 'index' %}" class="btn btn-secondary">Index</a>
+                <a href="{% url 'register' %}" class="btn btn-warning">Register</a>
+              {% endif %}
+            </div>          
+        </div>
+        
     <div class="container h-100">
         <div class="row align-items-center h-100">
             <div class="col-6 mx-auto">
@@ -26,8 +43,6 @@
                         {% csrf_token %}
                         {{ form|crispy }}
                         <button class="btn btn-primary" type="submit">Login</button>
-                        <a href="{% url 'register' %}" class="btn btn-secondary">Register</a>
-                        <a href="{% url 'index' %}" class="btn btn-warning">Index</a>
                     </form>
                 </div>
             </div>

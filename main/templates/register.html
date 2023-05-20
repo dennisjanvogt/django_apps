@@ -12,7 +12,22 @@
 
   <title>Versicherung XYZ | Register</title>
 </head>
-<body class="bg-secondary text-light">
+<body class="bg-dark text-light">
+    <div class="container">
+    <div class="row align-items-center justify-content-between">
+        <div class="col-auto">
+          <h1 class="my-4 text-light">DJANGO_APPS</h1>
+        </div>
+        <div class="col-auto">
+            {% if request.user.is_authenticated %}
+              <span class="text-light">Angemeldet als: {{ request.user.username }}</span>
+              <a href="/logout" class="btn btn-warning m-2">Logout</a>
+            {% else %}
+              <a href="{% url 'index' %}" class="btn btn-warning">Index</a>
+              <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+            {% endif %}
+          </div>          
+      </div>
     <div class="container h-100">
         <div class="row align-items-center h-100">
             <div class="col-6 mx-auto">
@@ -22,13 +37,13 @@
                     <form method="POST">
                         {% csrf_token %}
                         {{ form|crispy }}
-                        <button class="btn btn-primary" type="submit">Registrieren</button>
-                        <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+                        <button class="btn btn-secondary" type="submit">Registrieren</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
         crossorigin="anonymous"></script>
