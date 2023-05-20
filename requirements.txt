@@ -5,3 +5,4 @@ djangorestframework
 django-heroku
 gunicorn
 whitenoise
+factory_boy

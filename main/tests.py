@@ -15,7 +15,7 @@ from .forms import MitarbeiterRegisterForm
 from .views import index, login_view, logout_view, register_view
 
 
-class MainViewsTestCase(TestCase):
+class MainViewsTests(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(
@@ -92,7 +92,7 @@ class MainViewsTestCase(TestCase):
         )
 
 
-class URLTest(TestCase):
+class MainUrlsTests(TestCase):
     def test_root_url_resolves_to_index_view(self):
         view = resolve("/")
         self.assertEqual(view.func, index)
@@ -110,7 +110,7 @@ class URLTest(TestCase):
         self.assertEqual(view.func, logout_view)
 
 
-class MitarbeiterRegisterFormTest(TestCase):
+class MainFormsTests(TestCase):
     def test_form_with_valid_data(self):
         form = MitarbeiterRegisterForm(
             {
