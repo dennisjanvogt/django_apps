@@ -19,6 +19,18 @@ def index(request):
             "url": "/",
         },
         {
+            "name": "Kassenbuch",
+            "description": "In Arbeit",
+            "image_url": "/static/images/kassenbuch.png",
+            "url": "/",
+        },
+        {
+            "name": "Dokumenten Management System",
+            "description": "In Arbeit",
+            "image_url": "/static/images/dms.png",
+            "url": "/",
+        },
+        {
             "name": "None",
             "description": "Beschreibung None",
             "image_url": "/static/images/none.png",
