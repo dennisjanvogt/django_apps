@@ -12,6 +12,12 @@ class MitarbeiterRegisterForm(UserCreationForm):
     telefonnummer = forms.CharField()
     code = forms.IntegerField()
 
+    def __init__(self, *args, **kwargs):
+        super(UserCreationForm, self).__init__(*args, **kwargs)
+
+        for fieldname in ['username', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
+
     class Meta:
         model = User
         fields = [
