@@ -56,7 +56,7 @@ from .views.schadensfall_views import (
     schadensfall_update,
 )
 
-# MITARBEITER_TESTS
+# MITARBEITER
 
 
 class MitarbeiterModelTest(TestCase):
@@ -250,7 +250,7 @@ class MitarbeiterUrlsTest(TestCase):
         self.assertEqual(resolve(url).func, mitarbeiter_delete)
 
 
-# KUNDE_TESTS
+# KUNDE
 
 
 class KundeModelTest(TestCase):
@@ -394,7 +394,7 @@ class KundeUrlsTest(TestCase):
         self.assertEqual(resolve(url).func, kunde_delete)
 
 
-# VERSICHERUNGSVERTRAG_TESTS
+# VERSICHERUNGSVERTRAG
 
 
 class VersicherungsvertragModelTest(TestCase):
@@ -618,7 +618,7 @@ class VersicherungsvertragUrlsTest(TestCase):
         self.assertEqual(resolve(url).func, versicherungsvertrag_delete)
 
 
-# SCHADENSFALL_TESTS
+# SCHADENSFALL
 
 
 class SchadensfallModelTest(TestCase):
