@@ -4,7 +4,6 @@ from django.test.utils import setup_test_environment, teardown_test_environment
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_apps.settings")
 setup()
-teardown_test_environment()
 setup_test_environment()
 
 
