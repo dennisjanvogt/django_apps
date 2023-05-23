@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="d-flex align-items-center">
-        <h1 class="m-auto">Vers. Vertragsliste</h1>
+    <div class="d-flex align-items-center justify-content-between">
+        <h1>Vers. Vertragsliste</h1>
         <a href="{% url 'versicherungsvertrag_create' %}" class="btn btn-primary">Neuen Vertrag hinzufügen</a>
     </div>
-    <table class="table mt-3 bg-dark text-light">
+    <hr>
+    <table class="table table-striped table-dark mt-3">
         <thead>
             <tr>
                 <th>ID</th>
@@ -25,6 +26,10 @@
                     <td>
                         <a href="{% url 'versicherungsvertrag_detail' versicherungsvertrag.pk %}" class="btn btn-info">Details</a>
                     </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">Keine Versicherungsverträge gefunden.</td>
                 </tr>
             {% endfor %}
         </tbody>

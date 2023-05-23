@@ -53,6 +53,12 @@ class Versicherungsvertrag(models.Model):
 
 
 class Schadensfall(models.Model):
+    STATUS_CHOICES = [
+        ("offen", "Offen"),
+        ("bearbeitet", "Bearbeitet"),
+        ("abgeschlossen", "Abgeschlossen"),
+    ]
+
     beschreibung = models.TextField()
     versicherungsvertrag = models.ForeignKey(
         Versicherungsvertrag, on_delete=models.CASCADE
@@ -60,14 +66,7 @@ class Schadensfall(models.Model):
     schadenshoehe = models.DecimalField(
         max_digits=10, decimal_places=2, validators=[MinValueValidator(0)]
     )
-    status = models.CharField(
-        max_length=50,
-        choices=[
-            ("offen", "Offen"),
-            ("bearbeitet", "Bearbeitet"),
-            ("abgeschlossen", "Abgeschlossen"),
-        ],
-    )
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     erstellt_am = models.DateTimeField(auto_now_add=True)
     aktualisiert_am = models.DateTimeField(auto_now=True)
 

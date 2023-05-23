@@ -5,12 +5,13 @@
         <h1 class="m-auto">Mitarbeiter</h1>
     </div>
     <hr>
-    <table class="table bg-dark text-light">
+    <table class="table table-striped table-dark">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Position</th>
+                <th>Einstellungsdatum</th>
                 <th>Aktionen</th>
             </tr>
         </thead>
@@ -19,10 +20,15 @@
                 <tr>
                     <td>{{ mitarbeiter.pk }}</td>
                     <td>{{ mitarbeiter.user }}</td>
-                    <td>{{ mitarbeiter.position }}</td>
+                    <td>{{ mitarbeiter.get_position_display }}</td>
+                    <td>{{ mitarbeiter.einstellungsdatum }}</td>
                     <td>
                         <a href="{% url 'mitarbeiter_detail' mitarbeiter.pk %}" class="btn btn-info">Details</a>
                     </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center">Keine Mitarbeiter gefunden.</td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -5,33 +5,19 @@
         <h1 class="m-auto">Mitarbeiter Details</h1>
     </div>
     <hr>
-    <table class="table bg-dark text-light">
-        <tbody>
-            <tr>
-                <th>ID</th>
-                <td>{{ mitarbeiter.pk }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ mitarbeiter.user }}</td>
-            </tr>
-            <tr>
-                <th>Position</th>
-                <td>{{ mitarbeiter.position }}</td>
-            </tr>
-            <tr>
-                <th>Geburtsdatum</th>
-                <td>{{ mitarbeiter.geburtsdatum }}</td>
-            </tr>
-            <tr>
-                <th>Aktionen</th>
-                <td>
-                    <a href="{% url 'mitarbeiter_list' %}" class="btn btn-sm btn-secondary">Zurück zur Liste</a>
-                    <a href="{% url 'mitarbeiter_delete' mitarbeiter.pk %}" class="btn btn-sm btn-danger">Löschen</a>
-                    <a href="{% url 'mitarbeiter_update' mitarbeiter.pk %}" class="btn btn-sm btn-warning">Bearbeiten</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    
+    <div class="card bg-dark text-light">
+        <div class="card-body">
+            <h5 class="card-title">{{ mitarbeiter.user }}</h5>
+            <p class="card-text">
+                <strong>ID:</strong> {{ mitarbeiter.pk }}<br>
+                <strong>Position:</strong> {{ mitarbeiter.get_position_display }}<br>
+                <strong>Geburtsdatum:</strong> {{ mitarbeiter.geburtsdatum }}<br>
+                <strong>Einstellungsdatum:</strong> {{ mitarbeiter.einstellungsdatum }}<br>
+                <strong>Telefonnummer:</strong> {{ mitarbeiter.telefonnummer }}
+            </p>
+            <a href="{% url 'mitarbeiter_list' %}" class="btn btn-sm btn-secondary">Zurück zur Liste</a>
+            <a href="{% url 'mitarbeiter_delete' mitarbeiter.pk %}" class="btn btn-sm btn-danger">Löschen</a>
+            <a href="{% url 'mitarbeiter_update' mitarbeiter.pk %}" class="btn btn-sm btn-warning">Bearbeiten</a>
+        </div>
+    </div>
 {% endblock %}

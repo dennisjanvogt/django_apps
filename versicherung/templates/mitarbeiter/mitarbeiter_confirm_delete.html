@@ -5,10 +5,14 @@
         <h1 class="m-auto">Mitarbeiter löschen</h1>
     </div>
     <hr>
-    <p>Sind Sie sicher, dass Sie den Mitarbeiter "{{ mitarbeiter.user }}" löschen möchten?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Löschen bestätigen</button>
-        <a href="{% url 'mitarbeiter_list' %}" class="btn btn-secondary">Abbrechen</a>
-    </form>
+    <div class="card bg-dark text-light">
+        <div class="card-body">
+            <p class="card-text">Sind Sie sicher, dass Sie den Mitarbeiter "{{ mitarbeiter.user }}" löschen möchten?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Löschen bestätigen</button>
+                <a href="{% url 'mitarbeiter_list' %}" class="btn btn-secondary">Abbrechen</a>
+            </form>
+        </div>
+    </div>
 {% endblock %}

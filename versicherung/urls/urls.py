@@ -1,23 +1,8 @@
 from django.urls import path
 from . import patterns
-from ..views.views import home
+from ..views.views import home, dashboard
 
 urlpatterns = [
     path("", home, name="home"),
+    path("bashboard", dashboard, name="dashboard"),
 ] + patterns
-
-
-""" [
-    # Dashboard
-    path(
-        "dashboard/vertragsuebersicht/",
-        dashboard_vertragsuebersicht,
-        name="dashboard_vertragsuebersicht",
-    ),
-    path(
-        "dashboard/schadensuebersicht/",
-        dashboard_schadensuebersicht,
-        name="dashboard_schadensuebersicht",
-    ),
-]
- """

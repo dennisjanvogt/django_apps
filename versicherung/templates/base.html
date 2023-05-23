@@ -17,7 +17,7 @@
 
 <body class="bg-dark text-light">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Hauptnavigation">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'home' %}">Versicherung XYZ</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -27,6 +27,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                            <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'mitarbeiter_list' %}">Mitarbeiter</a>
                         </li>
@@ -38,9 +41,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'schadensfall_list' %}">Schadensfälle</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link ml-2" href="{% url 'logout' %}"> Logout</a>
@@ -59,7 +59,28 @@
     <main class="container mt-4 bg-dark text-light">
         {% block content %}
         {% endblock %}
+        {% if not request.resolver_match.url_name %}
+            <div class="alert alert-danger" role="alert">
+                Sorry, die angeforderte Seite wurde nicht gefunden.
+            </div>
+        {% endif %}
     </main>
+
+    <footer class="footer mt-auto py-3 bg-dark text-light">
+        <div class="container">
+            <div class="row">
+
+                    <span class="text-light text-center">&copy; 2027 Versicherung XYZ. Keine Rechte vorbehalten.</span>
+                    <ul class="list-inline text-center m-2">
+                        <li class="list-inline-item"><a href="{% url 'home' %}">Impressum</a></li>
+                        <li class="list-inline-item"><a href="{% url 'home' %}">Datenschutz</a></li>
+                        <li class="list-inline-item"><a href="{% url 'home' %}">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
