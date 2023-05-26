@@ -31,7 +31,19 @@ def index(request):
             "url": "/",
         },
         {
-            "name": "None",
+            "name": "Gamification Board",
+            "description": "Beschreibung None",
+            "image_url": "/static/images/none.png",
+            "url": "/",
+        },
+        {
+            "name": "Datenanalyse",
+            "description": "Beschreibung None",
+            "image_url": "/static/images/none.png",
+            "url": "/",
+        },
+        {
+            "name": "QuestionsTool",
             "description": "Beschreibung None",
             "image_url": "/static/images/none.png",
             "url": "/",
