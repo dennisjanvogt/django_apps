@@ -1,4 +1,4 @@
-⁸from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import MitarbeiterRegisterForm
@@ -31,24 +31,11 @@ def index(request):
             "url": "/",
         },
         {
-            "name": "Datenanalyse",
-            "description":"Datenanalyse",
-            "image_url": "/static/images/none.png",
-            "url": "/",
-        },
-        {
-            "name": "Gamification Board",
+            "name": "None",
             "description": "Beschreibung None",
             "image_url": "/static/images/none.png",
             "url": "/",
         },
-        {
-            "name": "Umfragetool",
-            "description": "Beschreibung None",
-            "image_url": "/static/images/none.png",
-            "url": "/",
-        },
-
         # Weitere Apps hier hinzufügen
     ]
 
