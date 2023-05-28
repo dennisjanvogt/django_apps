@@ -4,14 +4,17 @@ from django.contrib import messages
 
 from versicherung.forms import MitarbeiterForm
 from versicherung.models import Mitarbeiter
+from versicherung.filters import MitarbeiterFilter
 
 from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url="login")
 def mitarbeiter_list(request: HttpRequest):
-    mitarbeiter = Mitarbeiter.objects.all()
-    context = {"mitarbeiter_list": mitarbeiter}
+    mitarbeiter_filter = MitarbeiterFilter(
+        request.GET, queryset=Mitarbeiter.objects.all()
+    )
+    context = {"filter": mitarbeiter_filter}
     return render(request, "mitarbeiter/mitarbeiter_list.html", context)
 
 

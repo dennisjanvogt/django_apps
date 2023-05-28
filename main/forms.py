@@ -15,7 +15,7 @@ class MitarbeiterRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)
 
-        for fieldname in ['username', 'password1', 'password2']:
+        for fieldname in ["username", "password1", "password2"]:
             self.fields[fieldname].help_text = None
 
     class Meta:
@@ -49,8 +49,8 @@ class MitarbeiterRegisterForm(UserCreationForm):
 
         return user
 
-    def clean_code(self):
+    """ def clean_code(self):
         code = self.cleaned_data.get("code")
         if code != 000:  # Ersetzen Sie 000 durch den erwarteten Code
             raise forms.ValidationError("Ungültiger Code")
-        return code
+        return code """
