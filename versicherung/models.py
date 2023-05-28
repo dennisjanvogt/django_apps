@@ -1,27 +1,32 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator
 
 
 class Mitarbeiter(models.Model):
-    POSITION_CHOICES = [
-        ("agent", "Agent"),
-        ("manager", "Manager"),
-        ("support", "Support"),
-    ]
+    class Position(models.TextChoices):
+        AGENT = "agent", "Agent"
+        MANAGER = "manager", "Manager"
+        SUPPORT = "support", "Support"
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     position = models.CharField(
         max_length=100,
-        choices=POSITION_CHOICES,
+        choices=Position.choices,
         null=True,
+        blank=True,
     )
-    geburtsdatum = models.DateField(null=True)
-    einstellungsdatum = models.DateField(null=True)
-    telefonnummer = models.CharField(max_length=15, unique=True, null=True)
+    geburtsdatum = models.DateField(null=True, blank=True)
+    einstellungsdatum = models.DateField(null=True, blank=True)
+    telefonnummer = models.CharField(
+        max_length=15,
+        unique=True,
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
-        return self.user.username
+        return self.user.username if self.user else ""
 
 
 class Kunde(models.Model):
@@ -39,11 +44,18 @@ class Kunde(models.Model):
 class Versicherungsvertrag(models.Model):
     vertragsnummer = models.CharField(max_length=20, unique=True)
     kunde = models.ForeignKey(Kunde, on_delete=models.CASCADE)
-    mitarbeiter = models.ForeignKey(Mitarbeiter, on_delete=models.SET_NULL, null=True)
+    mitarbeiter = models.ForeignKey(
+        Mitarbeiter,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
     startdatum = models.DateField()
     enddatum = models.DateField()
     monatlicher_beitrag = models.DecimalField(
-        max_digits=10, decimal_places=2, validators=[MinValueValidator(0)]
+        max_digits=6,
+        decimal_places=2,
+        validators=[MinValueValidator(0)],
     )
     abgeschlossen_am = models.DateTimeField(auto_now_add=True)
     aktualisiert_am = models.DateTimeField(auto_now=True)
@@ -53,20 +65,24 @@ class Versicherungsvertrag(models.Model):
 
 
 class Schadensfall(models.Model):
-    STATUS_CHOICES = [
-        ("offen", "Offen"),
-        ("bearbeitet", "Bearbeitet"),
-        ("abgeschlossen", "Abgeschlossen"),
-    ]
+    class Status(models.TextChoices):
+        OFFEN = "offen", "Offen"
+        BEARBEITET = "bearbeitet", "Bearbeitet"
+        ABGESCHLOSSEN = "abgeschlossen", "Abgeschlossen"
 
-    beschreibung = models.TextField()
+    beschreibung = models.TextField(help_text="Beschreibung des Schadensfalls")
     versicherungsvertrag = models.ForeignKey(
-        Versicherungsvertrag, on_delete=models.CASCADE
+        Versicherungsvertrag,
+        on_delete=models.CASCADE,
     )
     schadenshoehe = models.DecimalField(
-        max_digits=10, decimal_places=2, validators=[MinValueValidator(0)]
+        max_digits=6,
+        decimal_places=2,
+        validators=[MinValueValidator(0)],
     )
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES)
+    status = models.CharField(
+        max_length=50, choices=Status.choices, help_text="Status des Schadensfalls"
+    )
     erstellt_am = models.DateTimeField(auto_now_add=True)
     aktualisiert_am = models.DateTimeField(auto_now=True)
 
