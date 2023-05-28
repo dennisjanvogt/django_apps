@@ -7,3 +7,5 @@ gunicorn
 whitenoise
 factory_boy
 faker
+django-filter
+django-oauth-toolkit

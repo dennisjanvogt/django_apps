@@ -1,7 +1,5 @@
 from django.http import HttpRequest
-from datetime import timedelta
 from django.db.models import Sum
-from django.utils import timezone
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from ..models import Kunde, Mitarbeiter, Versicherungsvertrag, Schadensfall
@@ -13,6 +11,7 @@ def home(request: HttpRequest):
     return render(request, "home.html", context)
 
 
+@login_required(login_url="login")
 def dashboard(request):
     kunden_count = Kunde.objects.count()
     mitarbeiter_count = Mitarbeiter.objects.count()

@@ -49,8 +49,8 @@ class MitarbeiterRegisterForm(UserCreationForm):
 
         return user
 
-    def clean_code(self):
+    """ def clean_code(self):
         code = self.cleaned_data.get("code")
         if code != 000:  # Ersetzen Sie 000 durch den erwarteten Code
             raise forms.ValidationError("Ungültiger Code")
-        return code
+        return code """
