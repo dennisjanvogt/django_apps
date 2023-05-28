@@ -19,7 +19,7 @@
 14.	CSV Export einbauen
 15.	Signals, Groups, Frontendmöglichkeiten, PDF Export, Profil bearbeiten, Testing
 
-
+## Notes
 
 For Testing you have to execute: python manage.py collectstatic
 
