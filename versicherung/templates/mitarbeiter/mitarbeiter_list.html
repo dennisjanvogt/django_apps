@@ -14,11 +14,15 @@
             {{ field|as_crispy_field }}
         </div>
         {% endfor %}
-        <div class="col-md-2">
-            <button class="d-inline btn btn-lg btn-outline-success"
+        <div class="col-md-3">
+            <button class="btn btn-outline-success"
                 type="submit">FILTER</button>
             <a href="{% url 'mitarbeiter_list' %}"
-                class="d-inline btn btn-lg btn-outline-danger">RESET</a>
+                class="btn btn-outline-danger">RESET</a>
+            <a
+                href="{% url 'export_mitarbeiter_csv' %}?{{ request.GET.urlencode }}"
+                class="btn btn-outline-info">EXPORT CSV</a>
+
         </div>
     </div>
 </form>

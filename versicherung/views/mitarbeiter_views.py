@@ -1,4 +1,5 @@
-from django.http import HttpRequest
+import csv
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 
@@ -64,3 +65,21 @@ def mitarbeiter_delete(request: HttpRequest, pk: int):
         return redirect("mitarbeiter_list")
     context = {"mitarbeiter": mitarbeiter}
     return render(request, "mitarbeiter/mitarbeiter_confirm_delete.html", context)
+
+
+def export_mitarbeiter_csv(request):
+    response = HttpResponse(content_type="text/csv")
+    response["Content-Disposition"] = 'attachment; filename="mitarbeiter.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(["ID", "Name", "Position", "Einstellungsdatum", "Telefonnummer"])
+
+    mitarbeiter_filter = MitarbeiterFilter(
+        request.GET, queryset=Mitarbeiter.objects.all()
+    )
+    for mitarbeiter in mitarbeiter_filter.qs.values_list(
+        "id", "user", "position", "einstellungsdatum", "telefonnummer"
+    ):
+        writer.writerow(mitarbeiter)
+
+    return response

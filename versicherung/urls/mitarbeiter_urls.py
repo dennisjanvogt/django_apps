@@ -1,6 +1,7 @@
 from django.urls import path
 
 from ..views.mitarbeiter_views import (
+    export_mitarbeiter_csv,
     mitarbeiter_list,
     mitarbeiter_create,
     mitarbeiter_delete,
@@ -21,5 +22,8 @@ urlpatterns = [
         "mitarbeiter/<int:pk>/delete/",
         mitarbeiter_delete,
         name="mitarbeiter_delete",
+    ),
+    path(
+        "mitarbeiter/export_csv/", export_mitarbeiter_csv, name="export_mitarbeiter_csv"
     ),
 ]
