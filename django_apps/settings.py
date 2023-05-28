@@ -42,10 +42,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "main.apps.MainConfig",
     "versicherung.apps.VersicherungConfig",
-    "dms.apps.DmsConfig",
     "crispy_forms",
     "crispy_bootstrap5",
     "rest_framework",
+    "oauth2_provider",
     "django_filters",
 ]
 
@@ -77,6 +77,13 @@ TEMPLATES = [
         },
     },
 ]
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
+    )
+}
 
 WSGI_APPLICATION = "django_apps.wsgi.application"
 

@@ -28,7 +28,7 @@ def index(request):
             "name": "Dokumenten Management System",
             "description": "In Arbeit",
             "image_url": "/static/images/dms.png",
-            "url": "/dms/",
+            "url": "/",
         },
         {
             "name": "Gamification Board",
