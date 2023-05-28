@@ -8,47 +8,46 @@ def index(request):
     apps = [
         {
             "name": "Versicherungsorganisation",
-            "description": "Versicherungsorganisation",
+            "description": "Implementierung diverser Django Funktionalitäten.",
             "image_url": "/static/images/versicherung.png",
             "url": "/versicherung/",
         },
-        {
-            "name": "Stopwatch",
-            "description": "In Arbeit",
-            "image_url": "/static/images/stopwatch.png",
-            "url": "/",
-        },
-        {
-            "name": "Kassenbuch",
-            "description": "In Arbeit",
-            "image_url": "/static/images/kassenbuch.png",
-            "url": "/",
-        },
-        {
-            "name": "Dokumenten Management System",
-            "description": "In Arbeit",
-            "image_url": "/static/images/dms.png",
-            "url": "/",
-        },
-        {
-            "name": "Gamification Board",
-            "description": "Beschreibung None",
-            "image_url": "/static/images/none.png",
-            "url": "/",
-        },
-        {
-            "name": "Datenanalyse",
-            "description": "Beschreibung None",
-            "image_url": "/static/images/none.png",
-            "url": "/",
-        },
-        {
-            "name": "QuestionsTool",
-            "description": "Beschreibung None",
-            "image_url": "/static/images/none.png",
-            "url": "/",
-        },
-        # Weitere Apps hier hinzufügen
+        # {
+        #     "name": "Stopwatch",
+        #     "description": "In Arbeit",
+        #     "image_url": "/static/images/stopwatch.png",
+        #     "url": "/",
+        # },
+        # {
+        #     "name": "Kassenbuch",
+        #     "description": "In Arbeit",
+        #     "image_url": "/static/images/kassenbuch.png",
+        #     "url": "/",
+        # },
+        # {
+        #     "name": "Dokumenten Management System",
+        #     "description": "In Arbeit",
+        #     "image_url": "/static/images/dms.png",
+        #     "url": "/",
+        # },
+        # {
+        #     "name": "Gamification Board",
+        #     "description": "Beschreibung None",
+        #     "image_url": "/static/images/none.png",
+        #     "url": "/",
+        # },
+        # {
+        #     "name": "Datenanalyse",
+        #     "description": "Beschreibung None",
+        #     "image_url": "/static/images/none.png",
+        #     "url": "/",
+        # },
+        # {
+        #     "name": "QuestionsTool",
+        #     "description": "Beschreibung None",
+        #     "image_url": "/static/images/none.png",
+        #     "url": "/",
+        # },
     ]
 
     return render(request, "index.html", {"apps": apps})

@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     "rest_framework",
-    "oauth2_provider",
     "django_filters",
 ]
 
@@ -79,12 +78,6 @@ TEMPLATES = [
 ]
 
 
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
-    )
-}
-
 WSGI_APPLICATION = "django_apps.wsgi.application"
 
 
@@ -112,12 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 LANGUAGE_CODE = "de"
-
 TIME_ZONE = "Europe/Berlin"
-
 USE_I18N = True
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -125,12 +115,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 

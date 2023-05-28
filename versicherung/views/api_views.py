@@ -13,7 +13,6 @@ from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(["GET", "POST"])
-@permission_classes([IsAuthenticated])
 def mitarbeiter_list_create(request):
     if request.method == "GET":
         mitarbeiter = Mitarbeiter.objects.all()
@@ -28,7 +27,6 @@ def mitarbeiter_list_create(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-@permission_classes([IsAuthenticated])
 def mitarbeiter_retrieve_update_destroy(request, pk):
     try:
         mitarbeiter = Mitarbeiter.objects.get(pk=pk)
@@ -50,7 +48,6 @@ def mitarbeiter_retrieve_update_destroy(request, pk):
 
 
 @api_view(["GET", "POST"])
-@permission_classes([IsAuthenticated])
 def kunde_list_create(request):
     if request.method == "GET":
         kunden = Kunde.objects.all()
@@ -65,7 +62,6 @@ def kunde_list_create(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-@permission_classes([IsAuthenticated])
 def kunde_retrieve_update_destroy(request, pk):
     try:
         kunde = Kunde.objects.get(pk=pk)
@@ -87,7 +83,6 @@ def kunde_retrieve_update_destroy(request, pk):
 
 
 @api_view(["GET", "POST"])
-@permission_classes([IsAuthenticated])
 def versicherungsvertrag_list_create(request):
     if request.method == "GET":
         vertraege = Versicherungsvertrag.objects.all()
@@ -102,7 +97,6 @@ def versicherungsvertrag_list_create(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-@permission_classes([IsAuthenticated])
 def versicherungsvertrag_retrieve_update_destroy(request, pk):
     try:
         vertrag = Versicherungsvertrag.objects.get(pk=pk)
@@ -124,7 +118,6 @@ def versicherungsvertrag_retrieve_update_destroy(request, pk):
 
 
 @api_view(["GET", "POST"])
-@permission_classes([IsAuthenticated])
 def schaden_list_create(request):
     if request.method == "GET":
         schaeden = Schadensfall.objects.all()
@@ -139,7 +132,6 @@ def schaden_list_create(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-@permission_classes([IsAuthenticated])
 def schaden_retrieve_update_destroy(request, pk):
     try:
         schaden = Schadensfall.objects.get(pk=pk)
